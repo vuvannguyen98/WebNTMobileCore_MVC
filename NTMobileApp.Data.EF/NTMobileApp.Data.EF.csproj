@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Configurations\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NTMobileApp.Data\NTMobileApp.Data.csproj" />
+    <ProjectReference Include="..\NTMobileApp.Infrastructure\NTMobileApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\NTMoblieApp.Utilities\NTMoblieApp.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
