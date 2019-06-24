@@ -13,6 +13,11 @@ using NTMobileApp.Models;
 using NTMobileApp.Services;
 using NTMobileApp.Data.EF;
 using NTMobileApp.Data.Entities;
+using AutoMapper;
+using NTMobileApp.Application.Interfaces;
+using NTMobileApp.Application.Implementation;
+using NTMobileApp.Data.IRepositories;
+using NTMobileApp.Data.EF.Reponsitoties;
 
 namespace NTMobileApp
 {
@@ -40,8 +45,14 @@ namespace NTMobileApp
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
+            services.AddSingleton(Mapper.Configuration);
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<DbInitializer>();
+
+            services.AddTransient<IProductCategoryRepository, ProductCategoryReponsitory>();
+            services.AddTransient<IProductCategoryService>();
 
             services.AddMvc();
         }
